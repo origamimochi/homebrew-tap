@@ -1,17 +1,29 @@
 class OnecliCli < Formula
   desc "Manage agents, secrets, and configuration from the terminal"
   homepage "https://github.com/onecli/onecli-cli"
-  version "1.2.1"
+  version "1.3.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/onecli/onecli-cli/releases/download/v1.2.1/onecli_1.2.1_darwin_arm64.tar.gz"
-      sha256 "cae74df14c1feb39eda02791ee2fd91da1d0490968a93debc18834f186c5e838"
+      url "https://github.com/onecli/onecli-cli/releases/download/v1.3.0/onecli_1.3.0_darwin_arm64.tar.gz"
+      sha256 "a969f2b9853b9da143b52a8ad814d1236806a14eddd32c704667750489492912"
     end
 
     on_intel do
-      url "https://github.com/onecli/onecli-cli/releases/download/v1.2.1/onecli_1.2.1_darwin_amd64.tar.gz"
-      sha256 "e1f3a78b6223bf1fb80eb3ebfa8f2e746d3cd511d03163612218af33b9fff103"
+      url "https://github.com/onecli/onecli-cli/releases/download/v1.3.0/onecli_1.3.0_darwin_amd64.tar.gz"
+      sha256 "a179cefa1eda018efff58bd159836b65fc8ba4fef82ded8e2d45512004589c94"
+    end
+  end
+
+  on_linux do
+    on_arm do
+      url "https://github.com/onecli/onecli-cli/releases/download/v1.3.0/onecli_1.3.0_linux_arm64.tar.gz"
+      sha256 "399842e85b29844bd6e250f64863b7a219b8b0c3f1c4076503126ba8e8b05856"
+    end
+
+    on_intel do
+      url "https://github.com/onecli/onecli-cli/releases/download/v1.3.0/onecli_1.3.0_linux_amd64.tar.gz"
+      sha256 "d804285a2ec90ae9de430ebd5ee5a07c70cf313a9fd97bde5f112041f3de0e6c"
     end
   end
 
