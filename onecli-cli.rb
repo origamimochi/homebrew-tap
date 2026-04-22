@@ -1,40 +1,24 @@
 class OnecliCli < Formula
   desc "Manage agents, secrets, and configuration from the terminal"
   homepage "https://github.com/onecli/onecli-cli"
-  version "1.3.0"
+  url "https://github.com/onecli/onecli-cli/archive/refs/tags/v1.3.0.tar.gz"
+  sha256 "0c5b712553107f49fc8bf6489ea045dbab41867e4fb4ba82df69a6fbd740b3d7"
   license "Apache-2.0"
+  head "https://github.com/onecli/onecli-cli.git", branch: "main"
 
   livecheck do
-    url :url
+    url :stable
     strategy :github_latest
   end
 
-  on_macos do
-    on_arm do
-      url "https://github.com/onecli/onecli-cli/releases/download/v1.3.0/onecli_1.3.0_darwin_arm64.tar.gz"
-      sha256 "a969f2b9853b9da143b52a8ad814d1236806a14eddd32c704667750489492912"
-    end
-
-    on_intel do
-      url "https://github.com/onecli/onecli-cli/releases/download/v1.3.0/onecli_1.3.0_darwin_amd64.tar.gz"
-      sha256 "a179cefa1eda018efff58bd159836b65fc8ba4fef82ded8e2d45512004589c94"
-    end
-  end
-
-  on_linux do
-    on_arm do
-      url "https://github.com/onecli/onecli-cli/releases/download/v1.3.0/onecli_1.3.0_linux_arm64.tar.gz"
-      sha256 "399842e85b29844bd6e250f64863b7a219b8b0c3f1c4076503126ba8e8b05856"
-    end
-
-    on_intel do
-      url "https://github.com/onecli/onecli-cli/releases/download/v1.3.0/onecli_1.3.0_linux_amd64.tar.gz"
-      sha256 "d804285a2ec90ae9de430ebd5ee5a07c70cf313a9fd97bde5f112041f3de0e6c"
-    end
-  end
+  depends_on "go" => :build
 
   def install
-    bin.install "onecli"
+    ldflags = %W[
+      -s -w
+      -X main.version=#{version}
+    ]
+    system "go", "build", *std_go_args(ldflags: ldflags, output: bin/"onecli"), "./cmd/onecli"
   end
 
   test do
