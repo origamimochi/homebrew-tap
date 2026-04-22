@@ -2,6 +2,12 @@ class OnecliCli < Formula
   desc "Manage agents, secrets, and configuration from the terminal"
   homepage "https://github.com/onecli/onecli-cli"
   version "1.3.0"
+  license "Apache-2.0"
+
+  livecheck do
+    url :url
+    strategy :github_latest
+  end
 
   on_macos do
     on_arm do
@@ -25,13 +31,6 @@ class OnecliCli < Formula
       url "https://github.com/onecli/onecli-cli/releases/download/v1.3.0/onecli_1.3.0_linux_amd64.tar.gz"
       sha256 "d804285a2ec90ae9de430ebd5ee5a07c70cf313a9fd97bde5f112041f3de0e6c"
     end
-  end
-
-  license "Apache-2.0"
-
-  livecheck do
-    url :url
-    strategy :github_latest
   end
 
   def install
